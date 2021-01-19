@@ -1,4 +1,5 @@
 require("dotenv").config();
+require('appmetrics-dash').attach();
 
 const express = require("express");
 const app = express();
