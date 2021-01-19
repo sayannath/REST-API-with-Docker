@@ -11,9 +11,11 @@ const cors = require("cors");
 
 const productRoutes = require("./routes/product");
 
+const MONGO_URL = process.env.DATABASE;
+
 //DB Connection
 mongoose
-  .connect(process.env.DATABASE, {
+  .connect(MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
