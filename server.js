@@ -1,5 +1,5 @@
 require("dotenv").config();
-require('appmetrics-dash').attach();
+require("appmetrics-dash").attach();
 
 const express = require("express");
 const app = express();
@@ -21,7 +21,10 @@ mongoose
     useCreateIndex: true,
   })
   .then(() => {
-    console.log("DB CONNECTED");
+    console.log("DB CONNECTED!");
+  })
+  .catch(() => {
+    console.log("DB CONNECTION FAILED!");
   });
 
 //Middlewares
@@ -32,6 +35,10 @@ app.use(cors());
 app.use("/api", productRoutes);
 
 const PORT = process.env.PORT || 3000;
+
+app.get("/", function (req, res) {
+  res.send("Rahat Backend");
+});
 
 app.listen(PORT, () => {
   console.log(`Server started on ${PORT}!`);
